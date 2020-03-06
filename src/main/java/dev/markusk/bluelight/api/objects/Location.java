@@ -1,4 +1,4 @@
-package dev.markusk.bluelight.api;
+package dev.markusk.bluelight.api.objects;
 
 import jdk.internal.jline.internal.Nullable;
 

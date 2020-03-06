@@ -1,8 +1,8 @@
 package dev.markusk.bluelight.api.factory;
 
-import dev.markusk.bluelight.api.Article;
-import dev.markusk.bluelight.api.Location;
-import dev.markusk.bluelight.api.Topic;
+import dev.markusk.bluelight.api.objects.Article;
+import dev.markusk.bluelight.api.objects.Location;
+import dev.markusk.bluelight.api.objects.Topic;
 
 public interface FetcherFactory {
 
