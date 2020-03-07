@@ -1,7 +1,5 @@
 package dev.markusk.bluelight.api.objects;
 
-import jdk.internal.jline.internal.Nullable;
-
 import java.util.Date;
 import java.util.List;
 
@@ -35,12 +33,18 @@ public interface Article {
   void setUrl(String url);
 
   /**
+   * Nullable
+   *
    * @return the release time of the article
    */
-  @Nullable
   Date getReleaseTime();
 
-  void setReleaseTime(@Nullable Date releaseTime);
+  /**
+   * Nullable
+   *
+   * @param releaseTime the release time of the article
+   */
+  void setReleaseTime(Date releaseTime);
 
   /**
    * @return the fetch time of the article
@@ -60,36 +64,36 @@ public interface Article {
   void setFileIdentification(String fileIdentification);
 
   /**
+   * Nullable
    * Not all articles provides separated location and topic tags.
    * This list must not exist at the first fetch.
    * It can be filled later when the content is downloaded
    *
    * @return a list with @{@link Location} objects
    */
-  @Nullable
   List<Location> getLocationTags();
 
-  void setLocationTags(@Nullable List<Location> locationTags);
+  void setLocationTags(List<Location> locationTags);
 
   /**
+   * Nullable
    * This list must not exist at the first fetch.
    * It can be filled later when the content is downloaded
    *
    * @return a list with @{@link Topic} objects
    */
-  @Nullable
   List<Topic> getTopicTags();
 
-  void setTopicTags(@Nullable List<Topic> topicTags);
+  void setTopicTags(List<Topic> topicTags);
 
   /**
+   * Nullable
    * This value must not exist at the first fetch.
    * It can be filled later when the content is downloaded.
    *
    * @return the written content of the article
    */
-  @Nullable
   String getContent();
 
-  void setContent(@Nullable String content);
+  void setContent(String content);
 }

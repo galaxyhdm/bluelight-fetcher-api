@@ -7,7 +7,7 @@ import dev.markusk.bluelight.api.objects.Topic;
 
 public interface AbstractDataManager {
 
-  void initialize(AbstractFetcher abstractFetcher);
+  boolean initialize(AbstractFetcher abstractFetcher);
 
   void close();
 

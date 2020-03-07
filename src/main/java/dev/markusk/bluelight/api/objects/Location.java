@@ -1,7 +1,5 @@
 package dev.markusk.bluelight.api.objects;
 
-import jdk.internal.jline.internal.Nullable;
-
 public interface Location {
 
   /**
@@ -19,23 +17,21 @@ public interface Location {
   void setLocationName(String locationName);
 
   /**
-   * {@link Nullable}
+   * Nullable
    *
    * @return the latitude of the location
    */
-  @Nullable
   double getLatitude();
 
-  void setLatitude(@Nullable double latitude);
+  void setLatitude(double latitude);
 
   /**
-   * {@link Nullable}
+   * Nullable
    *
    * @return the longitude of the location
    */
-  @Nullable
   double getLongitude();
 
-  void setLongitude(@Nullable double longitude);
+  void setLongitude(double longitude);
 
 }
