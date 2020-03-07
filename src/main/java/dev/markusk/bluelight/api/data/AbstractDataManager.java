@@ -19,10 +19,21 @@ public interface AbstractDataManager {
   void addArticle(Article article);
 
   /**
+   * This method doesn't load the related tags!
+   *
    * @param id the unique identifier of a article given by {@link Article#getId()}
    * @return the related {@link Article} object
    */
-  Article getArticle(String id);
+  default Article getArticle(String id) {
+    return getArticle(id, false);
+  }
+
+  /**
+   * @param id       the unique identifier of a article given by {@link Article#getId()}
+   * @param loadTags set true to load the related tags of this article
+   * @return the related {@link Article} object
+   */
+  Article getArticle(String id, boolean loadTags);
 
   /**
    * This method can be used to update a {@link Article} in a datasource.
@@ -44,6 +55,20 @@ public interface AbstractDataManager {
    * @return true when article is present
    */
   boolean hasArticle(String id);
+
+  /**
+   * This method can be used to update/set the location-links in the datasource.
+   *
+   * @param article a {@link Article} object with set/edited {@link Article#getLocationTags()}
+   */
+  void updateLocationLinks(Article article);
+
+  /**
+   * This method can be used to update/set the topic-links in the datasource.
+   *
+   * @param article a {@link Article} object with set/edited {@link Article#getTopicTags()}
+   */
+  void updateTopicLinks(Article article);
 
   /**
    * This method can be used to insert a {@link Location} object to a datasource
