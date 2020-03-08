@@ -49,7 +49,7 @@ public interface Article {
   /**
    * @return the fetch time of the article
    */
-  String getFetchTime();
+  Date getFetchTime();
 
   void setFetchTime(Date fetchTime);
 

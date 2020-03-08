@@ -21,17 +21,24 @@ public interface Location {
    *
    * @return the latitude of the location
    */
-  double getLatitude();
+  Double getLatitude();
 
-  void setLatitude(double latitude);
+  void setLatitude(Double latitude);
 
   /**
    * Nullable
    *
    * @return the longitude of the location
    */
-  double getLongitude();
+  Double getLongitude();
 
-  void setLongitude(double longitude);
+  void setLongitude(Double longitude);
+
+  /**
+   * @return true when the system tried to set latitude and longitude
+   */
+  boolean isIndexed();
+
+  void setIndexed(boolean indexed);
 
 }

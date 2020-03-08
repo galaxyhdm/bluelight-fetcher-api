@@ -5,6 +5,8 @@ import dev.markusk.bluelight.api.objects.Article;
 import dev.markusk.bluelight.api.objects.Location;
 import dev.markusk.bluelight.api.objects.Topic;
 
+import java.util.Optional;
+
 public interface AbstractDataManager {
 
   boolean initialize(AbstractFetcher abstractFetcher);
@@ -24,7 +26,7 @@ public interface AbstractDataManager {
    * @param id the unique identifier of a article given by {@link Article#getId()}
    * @return the related {@link Article} object
    */
-  default Article getArticle(String id) {
+  default Optional<Article> getArticle(String id) {
     return getArticle(id, false);
   }
 
@@ -33,7 +35,7 @@ public interface AbstractDataManager {
    * @param loadTags set true to load the related tags of this article
    * @return the related {@link Article} object
    */
-  Article getArticle(String id, boolean loadTags);
+  Optional<Article> getArticle(String id, boolean loadTags);
 
   /**
    * This method can be used to update a {@link Article} in a datasource.
@@ -81,7 +83,7 @@ public interface AbstractDataManager {
    * @param id the unique identifier of a location given by {@link Location#getId()}
    * @return the related {@link Location} object
    */
-  Location getLocation(String id);
+  Optional<Location> getLocation(String id);
 
   /**
    * @param id the unique identifier of a location given by {@link Location#getId()}
@@ -100,7 +102,7 @@ public interface AbstractDataManager {
    * @param id the unique identifier of a topic given by {@link Topic#getId()}
    * @return the related {@link Topic} object
    */
-  Topic getTopic(String id);
+  Optional<Topic> getTopic(String id);
 
   /**
    * @param id the unique identifier of a topic given by {@link Topic#getId()}
