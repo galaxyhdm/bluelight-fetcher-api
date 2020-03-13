@@ -70,4 +70,14 @@ public class BaseFetchInfo {
   public void setReleaseTime(final Date releaseTime) {
     this.releaseTime = releaseTime;
   }
+
+  @Override
+  public String toString() {
+    return "BaseFetchInfo{" +
+        "targetUid='" + targetUid + '\'' +
+        ", url='" + url + '\'' +
+        ", title='" + title + '\'' +
+        ", releaseTime=" + releaseTime +
+        '}';
+  }
 }
