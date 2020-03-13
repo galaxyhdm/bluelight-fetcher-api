@@ -76,6 +76,7 @@ public class RssFetcher implements AbstractInfoFetcher {
    * @return a date object in utc time zone!
    */
   public Date extractDate(String inputDate) {
+    if(inputDate == null) return null;
     final Date parse;
     try {
       parse = this.simpleDateFormat.parse(inputDate);
