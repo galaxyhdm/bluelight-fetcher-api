@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.apptastic:rssreader:2.2.0' //https://github.com/w3stling/rssreader
+
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
 
