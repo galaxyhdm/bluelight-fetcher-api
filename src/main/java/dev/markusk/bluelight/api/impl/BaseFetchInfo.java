@@ -1,4 +1,4 @@
-package dev.markusk.bluelight.api.objects;
+package dev.markusk.bluelight.api.impl;
 
 import java.util.Date;
 

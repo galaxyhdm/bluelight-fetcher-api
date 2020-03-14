@@ -1,6 +1,6 @@
 package dev.markusk.bluelight.api.builder;
 
-import dev.markusk.bluelight.api.objects.BaseFetchInfo;
+import dev.markusk.bluelight.api.impl.BaseFetchInfo;
 
 import java.util.Date;
 

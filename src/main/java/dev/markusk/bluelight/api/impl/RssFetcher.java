@@ -1,10 +1,9 @@
-package dev.markusk.bluelight.api.fetcher;
+package dev.markusk.bluelight.api.impl;
 
 import com.apptastic.rssreader.Item;
 import com.apptastic.rssreader.RssReader;
 import dev.markusk.bluelight.api.AbstractInfoFetcher;
 import dev.markusk.bluelight.api.builder.BaseFetchInfoBuilder;
-import dev.markusk.bluelight.api.objects.BaseFetchInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,14 +21,16 @@ public class RssFetcher implements AbstractInfoFetcher {
   private String targetUid;
   private String url;
   private String simpleDatePattern = "E',' dd MMM yyyy HH:mm:ss Z";
+  private int updateTime;
 
   private SimpleDateFormat simpleDateFormat;
 
   @Override
-  public void initialize(final String targetUid, final String fetchUrl) {
+  public void initialize(final String targetUid, final String fetchUrl, final int updateTime) {
     this.rssReader = new RssReader();
     this.targetUid = targetUid;
     this.url = fetchUrl;
+    this.updateTime = updateTime;
     this.simpleDateFormat = new SimpleDateFormat(this.simpleDatePattern, Locale.US);
     this.simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
   }
@@ -68,6 +69,11 @@ public class RssFetcher implements AbstractInfoFetcher {
     this.simpleDatePattern = simpleDatePattern;
   }
 
+  @Override
+  public int getUpdateTime() {
+    return this.updateTime;
+  }
+
   /**
    * @param inputDate is a formatted date string
    *                  This string can be null. This means that the pubDate could not be extracted from the RSS feed.
@@ -76,7 +82,7 @@ public class RssFetcher implements AbstractInfoFetcher {
    * @return a date object in utc time zone!
    */
   public Date extractDate(String inputDate) {
-    if(inputDate == null) return null;
+    if (inputDate == null) return null;
     final Date parse;
     try {
       parse = this.simpleDateFormat.parse(inputDate);
