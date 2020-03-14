@@ -1,20 +1,30 @@
 package dev.markusk.bluelight.api.objects;
 
-public interface Topic {
+public class Topic {
 
+  private String id;
+  private String topicName;
 
   /**
    * @return a unique id as string
    */
-  String getId();
+  public String getId() {
+    return this.id;
+  }
 
-  void setId(String id);
+  public void setId(String id) {
+    this.id = id;
+  }
 
   /**
    * @return the topic name (example: school)
    */
-  String getTopicName();
+  public String getTopicName() {
+    return this.topicName;
+  }
 
-  void setTopicName(String topicName);
+  public void setTopicName(String topicName) {
+    this.topicName = topicName;
+  }
 
 }

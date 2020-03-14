@@ -6,7 +6,17 @@ import java.util.List;
 /**
  * This class is a representation for a fetched article from a website or rss-feed.
  */
-public interface Article {
+public class Article {
+
+  private String id;
+  private String title;
+  private String url;
+  private Date releaseTime;
+  private Date fetchTime;
+  private String fileIdentification;
+  private List<Location> locationTags;
+  private List<Topic> topicTags;
+  private String content;
 
   /**
    * This method can return a id provided by the fetch target
@@ -14,44 +24,64 @@ public interface Article {
    *
    * @return a unique id as string
    */
-  String getId();
+  public String getId() {
+    return this.id;
+  }
 
-  void setId(String id);
+  public void setId(String id) {
+    this.id = id;
+  }
 
   /**
    * @return the fetched title of the article
    */
-  String getTitle();
+  public String getTitle() {
+    return this.title;
+  }
 
-  void setTitle(String title);
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
   /**
    * @return the download url for the whole article
    */
-  String getUrl();
+  public String getUrl() {
+    return this.url;
+  }
 
-  void setUrl(String url);
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
   /**
    * Nullable
    *
    * @return the release time of the article
    */
-  Date getReleaseTime();
+  public Date getReleaseTime() {
+    return this.releaseTime;
+  }
 
   /**
    * Nullable
    *
    * @param releaseTime the release time of the article
    */
-  void setReleaseTime(Date releaseTime);
+  public void setReleaseTime(Date releaseTime) {
+    this.releaseTime = releaseTime;
+  }
 
   /**
    * @return the fetch time of the article
    */
-  Date getFetchTime();
+  public Date getFetchTime() {
+    return this.fetchTime;
+  }
 
-  void setFetchTime(Date fetchTime);
+  public void setFetchTime(Date fetchTime) {
+    this.fetchTime = fetchTime;
+  }
 
   /**
    * The identification can be a SHA-256 hash of other parameters or a random string
@@ -59,9 +89,13 @@ public interface Article {
    *
    * @return a unique identification for the downloaded file
    */
-  String getFileIdentification();
+  public String getFileIdentification() {
+    return this.fileIdentification;
+  }
 
-  void setFileIdentification(String fileIdentification);
+  public void setFileIdentification(String fileIdentification) {
+    this.fileIdentification = fileIdentification;
+  }
 
   /**
    * Nullable
@@ -71,9 +105,13 @@ public interface Article {
    *
    * @return a list with @{@link Location} objects
    */
-  List<Location> getLocationTags();
+  public List<Location> getLocationTags() {
+    return this.locationTags;
+  }
 
-  void setLocationTags(List<Location> locationTags);
+  public void setLocationTags(List<Location> locationTags) {
+    this.locationTags = locationTags;
+  }
 
   /**
    * Nullable
@@ -82,9 +120,13 @@ public interface Article {
    *
    * @return a list with @{@link Topic} objects
    */
-  List<Topic> getTopicTags();
+  public List<Topic> getTopicTags() {
+    return this.topicTags;
+  }
 
-  void setTopicTags(List<Topic> topicTags);
+  public void setTopicTags(List<Topic> topicTags) {
+    this.topicTags = topicTags;
+  }
 
   /**
    * Nullable
@@ -93,7 +135,11 @@ public interface Article {
    *
    * @return the written content of the article
    */
-  String getContent();
+  public String getContent() {
+    return this.content;
+  }
 
-  void setContent(String content);
+  public void setContent(String content) {
+    this.content = content;
+  }
 }
