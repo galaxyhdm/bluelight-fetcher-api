@@ -1,7 +1,7 @@
 package dev.markusk.bluelight.api.objects;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * This class is a representation for a fetched article from a website or rss-feed.
@@ -14,8 +14,8 @@ public class Article {
   private Date releaseTime;
   private Date fetchTime;
   private String fileIdentification;
-  private List<Location> locationTags;
-  private List<Topic> topicTags;
+  private Set<Location> locationTags;
+  private Set<Topic> topicTags;
   private String content;
 
   /**
@@ -105,11 +105,11 @@ public class Article {
    *
    * @return a list with @{@link Location} objects
    */
-  public List<Location> getLocationTags() {
+  public Set<Location> getLocationTags() {
     return this.locationTags;
   }
 
-  public void setLocationTags(List<Location> locationTags) {
+  public void setLocationTags(Set<Location> locationTags) {
     this.locationTags = locationTags;
   }
 
@@ -120,11 +120,11 @@ public class Article {
    *
    * @return a list with @{@link Topic} objects
    */
-  public List<Topic> getTopicTags() {
+  public Set<Topic> getTopicTags() {
     return this.topicTags;
   }
 
-  public void setTopicTags(List<Topic> topicTags) {
+  public void setTopicTags(Set<Topic> topicTags) {
     this.topicTags = topicTags;
   }
 
