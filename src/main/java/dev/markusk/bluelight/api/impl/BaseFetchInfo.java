@@ -31,11 +31,18 @@ public class BaseFetchInfo {
    */
   private Date releaseTime;
 
-  public BaseFetchInfo(final String targetUid, final String url, final String title, final Date releaseTime) {
+  /**
+   * This date represents the fetch time of the article
+   */
+  private Date fetchTime;
+
+  public BaseFetchInfo(final String targetUid, final String url, final String title, final Date releaseTime,
+      final Date fetchTime) {
     this.targetUid = targetUid;
     this.url = url;
     this.title = title;
     this.releaseTime = releaseTime;
+    this.fetchTime = fetchTime;
   }
 
 
@@ -71,6 +78,14 @@ public class BaseFetchInfo {
     this.releaseTime = releaseTime;
   }
 
+  public Date getFetchTime() {
+    return fetchTime;
+  }
+
+  public void setFetchTime(final Date fetchTime) {
+    this.fetchTime = fetchTime;
+  }
+
   @Override
   public String toString() {
     return "BaseFetchInfo{" +
@@ -78,6 +93,7 @@ public class BaseFetchInfo {
         ", url='" + url + '\'' +
         ", title='" + title + '\'' +
         ", releaseTime=" + releaseTime +
+        ", fetchTime=" + fetchTime +
         '}';
   }
 }

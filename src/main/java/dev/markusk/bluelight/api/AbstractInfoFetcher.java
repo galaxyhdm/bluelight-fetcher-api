@@ -2,6 +2,7 @@ package dev.markusk.bluelight.api;
 
 import dev.markusk.bluelight.api.impl.BaseFetchInfo;
 
+import java.util.Date;
 import java.util.List;
 
 public interface AbstractInfoFetcher {
@@ -18,7 +19,16 @@ public interface AbstractInfoFetcher {
    * @return a list with {@link BaseFetchInfo} extracted from the fetch source
    * throws {@link Exception} when something is not working
    */
-  List<BaseFetchInfo> getFetchInfos() throws Exception;
+  default List<BaseFetchInfo> getFetchInfos() throws Exception {
+    return getFetchInfos(new Date());
+  }
+
+  /**
+   * @param fetchTime this date represents the fetch time of the articles
+   * @return a list with {@link BaseFetchInfo} extracted from the fetch source
+   * throws {@link Exception} when something is not working
+   */
+  List<BaseFetchInfo> getFetchInfos(Date fetchTime) throws Exception;
 
   /**
    * @return the fetch url. For example a rss-feed or a website.

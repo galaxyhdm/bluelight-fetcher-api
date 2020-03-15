@@ -36,7 +36,7 @@ public class RssFetcher implements AbstractInfoFetcher {
   }
 
   @Override
-  public List<BaseFetchInfo> getFetchInfos() throws Exception {
+  public List<BaseFetchInfo> getFetchInfos(final Date fetchTime) throws Exception {
     final Stream<Item> read = this.rssReader.read(this.getFetchUrl());
     final List<BaseFetchInfo> fetchInfos = new ArrayList<>();
     read.forEach(item -> {
@@ -45,6 +45,7 @@ public class RssFetcher implements AbstractInfoFetcher {
           .url(item.getLink().orElse(null))
           .title(item.getTitle().orElse(null))
           .releaseTime(this.extractDate(item.getPubDate().orElse(null)))
+          .fetchTime(fetchTime)
           .createBaseFetchInfo();
       fetchInfos.add(baseFetchInfo);
     });

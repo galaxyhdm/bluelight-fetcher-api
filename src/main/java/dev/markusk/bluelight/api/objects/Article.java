@@ -18,6 +18,23 @@ public class Article {
   private Set<Topic> topicTags;
   private String content;
 
+  public Article() {
+  }
+
+  public Article(final String id, final String title, final String url, final Date releaseTime, final Date fetchTime,
+      final String fileIdentification, final Set<Location> locationTags,
+      final Set<Topic> topicTags, final String content) {
+    this.id = id;
+    this.title = title;
+    this.url = url;
+    this.releaseTime = releaseTime;
+    this.fetchTime = fetchTime;
+    this.fileIdentification = fileIdentification;
+    this.locationTags = locationTags;
+    this.topicTags = topicTags;
+    this.content = content;
+  }
+
   /**
    * This method can return a id provided by the fetch target
    * or a self generated id.

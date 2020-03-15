@@ -9,6 +9,7 @@ public class BaseFetchInfoBuilder {
   private String url;
   private String title;
   private Date releaseTime;
+  private Date fetchTime;
 
   public BaseFetchInfoBuilder targetUid(final String targetUid) {
     this.targetUid = targetUid;
@@ -30,7 +31,12 @@ public class BaseFetchInfoBuilder {
     return this;
   }
 
+  public BaseFetchInfoBuilder fetchTime(final Date fetchTime) {
+    this.fetchTime = fetchTime;
+    return this;
+  }
+
   public BaseFetchInfo createBaseFetchInfo() {
-    return new BaseFetchInfo(targetUid, url, title, releaseTime);
+    return new BaseFetchInfo(targetUid, url, title, releaseTime, fetchTime);
   }
 }
