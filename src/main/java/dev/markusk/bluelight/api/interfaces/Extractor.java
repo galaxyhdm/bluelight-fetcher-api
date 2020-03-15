@@ -16,7 +16,7 @@ public interface Extractor {
   String getIdFromUrl(String url);
 
   /**
-   * This method is only called when getIdFromUrl returns null.
+   * This method is called when getIdFromUrl returns null.
    *
    * @return a unique id.
    */
