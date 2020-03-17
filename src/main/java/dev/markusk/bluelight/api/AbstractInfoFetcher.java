@@ -16,7 +16,7 @@ public interface AbstractInfoFetcher {
   void initialize(String targetUid, String fetchUrl, int updateTime);
 
   /**
-   * @return a list with {@link BaseFetchInfo} extracted from the fetch source
+   * @return a list with {@link BaseFetchInfo} extracted from the fetch source. Sorted from new to old!
    * throws {@link Exception} when something is not working
    */
   default List<BaseFetchInfo> getFetchInfos() throws Exception {
