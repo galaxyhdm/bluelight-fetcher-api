@@ -16,8 +16,6 @@ public class RssFetcher implements AbstractInfoFetcher {
 
   private static final Logger LOGGER = LogManager.getLogger();
 
-  private RssReader rssReader;
-
   private String targetUid;
   private String url;
   private String simpleDatePattern = "E',' dd MMM yyyy HH:mm:ss Z";
@@ -27,7 +25,6 @@ public class RssFetcher implements AbstractInfoFetcher {
 
   @Override
   public void initialize(final String targetUid, final String fetchUrl, final int updateTime) {
-    this.rssReader = new RssReader();
     this.targetUid = targetUid;
     this.url = fetchUrl;
     this.updateTime = updateTime;
@@ -37,18 +34,20 @@ public class RssFetcher implements AbstractInfoFetcher {
 
   @Override
   public List<BaseFetchInfo> getFetchInfos(final Date fetchTime) throws Exception {
-    final Stream<Item> read = this.rssReader.read(this.getFetchUrl());
     final List<BaseFetchInfo> fetchInfos = new ArrayList<>();
-    read.forEach(item -> {
-      final BaseFetchInfo baseFetchInfo = new BaseFetchInfoBuilder()
-          .targetUid(this.getTargetUid())
-          .url(item.getLink().orElse(null))
-          .title(item.getTitle().orElse(null))
-          .releaseTime(this.extractDate(item.getPubDate().orElse(null)))
-          .fetchTime(fetchTime)
-          .createBaseFetchInfo();
-      fetchInfos.add(baseFetchInfo);
-    });
+    final RssReader rssReader = new RssReader();
+    try (Stream<Item> read = rssReader.read(this.getFetchUrl())) {
+      read.forEach(item -> {
+        final BaseFetchInfo baseFetchInfo = new BaseFetchInfoBuilder()
+            .targetUid(this.getTargetUid())
+            .url(item.getLink().orElse(null))
+            .title(item.getTitle().orElse(null))
+            .releaseTime(this.extractDate(item.getPubDate().orElse(null)))
+            .fetchTime(fetchTime)
+            .createBaseFetchInfo();
+        fetchInfos.add(baseFetchInfo);
+      });
+    }
     return fetchInfos;
   }
 
