@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 public class RssFetcher implements AbstractInfoFetcher {
 
   private static final Logger LOGGER = LogManager.getLogger();
+  private static final RssReader RSS_READER = new RssReader();
 
   private String targetUid;
   private String url;
@@ -35,8 +36,7 @@ public class RssFetcher implements AbstractInfoFetcher {
   @Override
   public List<BaseFetchInfo> getFetchInfos(final Date fetchTime) throws Exception {
     final List<BaseFetchInfo> fetchInfos = new ArrayList<>();
-    final RssReader rssReader = new RssReader();
-    try (Stream<Item> read = rssReader.read(this.getFetchUrl())) {
+    try (Stream<Item> read = RSS_READER.read(this.getFetchUrl())) {
       read.forEach(item -> {
         final BaseFetchInfo baseFetchInfo = new BaseFetchInfoBuilder()
             .targetUid(this.getTargetUid())
