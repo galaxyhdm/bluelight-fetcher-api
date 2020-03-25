@@ -104,7 +104,7 @@ public class Article {
    * The identification can be a SHA-256 hash of other parameters or a random string
    * It is important that this variable is unique.
    *
-   * @return a unique identification for the downloaded file
+   * @return a unique identification for the downloaded file (without file-extension)
    */
   public String getFileIdentification() {
     return this.fileIdentification;

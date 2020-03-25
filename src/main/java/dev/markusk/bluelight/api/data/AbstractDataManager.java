@@ -6,6 +6,7 @@ import dev.markusk.bluelight.api.objects.Location;
 import dev.markusk.bluelight.api.objects.Topic;
 
 import java.util.Optional;
+import java.util.Set;
 
 public interface AbstractDataManager {
 
@@ -66,11 +67,27 @@ public interface AbstractDataManager {
   void updateLocationLinks(Article article);
 
   /**
+   * This method returns all linked locations for the article
+   *
+   * @param articleId the unique identifier of a article given by {@link Article#getId()}
+   * @return a set of all linked locations
+   */
+  Set<Location> getLocations(final String articleId);
+
+  /**
    * This method can be used to update/set the topic-links in the datasource.
    *
    * @param article a {@link Article} object with set/edited {@link Article#getTopicTags()}
    */
   void updateTopicLinks(Article article);
+
+  /**
+   * This method returns all linked topics for the article
+   *
+   * @param articleId the unique identifier of a article given by {@link Article#getId()}
+   * @return a set of all linked topics
+   */
+  Set<Topic> getTopics(final String articleId);
 
   /**
    * This method can be used to insert a {@link Location} object to a datasource
