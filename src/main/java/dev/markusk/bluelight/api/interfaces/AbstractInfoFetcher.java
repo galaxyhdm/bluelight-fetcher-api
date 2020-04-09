@@ -1,4 +1,4 @@
-package dev.markusk.bluelight.api;
+package dev.markusk.bluelight.api.interfaces;
 
 import dev.markusk.bluelight.api.impl.BaseFetchInfo;
 

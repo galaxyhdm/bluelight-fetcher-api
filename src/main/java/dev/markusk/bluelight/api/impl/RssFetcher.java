@@ -2,8 +2,8 @@ package dev.markusk.bluelight.api.impl;
 
 import com.apptastic.rssreader.Item;
 import com.apptastic.rssreader.RssReader;
-import dev.markusk.bluelight.api.AbstractInfoFetcher;
 import dev.markusk.bluelight.api.builder.BaseFetchInfoBuilder;
+import dev.markusk.bluelight.api.interfaces.AbstractInfoFetcher;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

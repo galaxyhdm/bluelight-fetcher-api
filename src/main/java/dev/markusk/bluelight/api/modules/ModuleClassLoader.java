@@ -36,8 +36,7 @@ public class ModuleClassLoader extends URLClassLoader {
     try {
       final Class<?> mainClass;
       try {
-        mainClass =
-            Class.forName(this.moduleDescription.getMain(), true, this);
+        mainClass = Class.forName(this.moduleDescription.getMain(), true, this);
       } catch (ClassNotFoundException e) {
         throw new InvalidModuleException("Cannot find main class `" + moduleDescription.getMain() + "'", e);
       }
@@ -61,8 +60,8 @@ public class ModuleClassLoader extends URLClassLoader {
 //    if (!(module.getClass().getClassLoader() == this))
 //      throw new IllegalStateException("Cannot initialize module outside of this class loader");
     this.module
-        .initialize(this.moduleLoader, this.moduleLoader.getAbstractFetcher(), this.moduleDescription, this.dataFolder,
-            this.file, this);
+        .initialize(LOGGER, this.moduleLoader, this.moduleLoader.getAbstractFetcher(), this.moduleDescription,
+            this.dataFolder, this.file, this);
   }
 
   public Module getModule() {

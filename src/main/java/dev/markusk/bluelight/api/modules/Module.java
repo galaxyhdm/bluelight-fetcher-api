@@ -1,7 +1,6 @@
 package dev.markusk.bluelight.api.modules;
 
 import dev.markusk.bluelight.api.AbstractFetcher;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
@@ -11,8 +10,7 @@ import java.io.File;
  */
 public abstract class Module {
 
-  private static final Logger LOGGER = LogManager.getLogger();
-
+  private Logger logger;
   private ModuleLoader moduleLoader;
   private AbstractFetcher fetcher;
   private ModuleDescription moduleDescription;
@@ -30,9 +28,10 @@ public abstract class Module {
 //    ((ModuleClassLoader) classLoader).initialize(this);
   }
 
-  public void initialize(final ModuleLoader moduleLoader,
+  public void initialize(final Logger logger, final ModuleLoader moduleLoader,
       final AbstractFetcher fetcher, final ModuleDescription moduleDescription, final File dataFolder,
       final File moduleFolder, final ModuleClassLoader moduleClassLoader) {
+    this.logger = logger;
     this.moduleLoader = moduleLoader;
     this.fetcher = fetcher;
     this.moduleDescription = moduleDescription;
@@ -40,7 +39,7 @@ public abstract class Module {
     this.moduleFolder = moduleFolder;
     this.classLoader = moduleClassLoader;
 
-    if (!this.dataFolder.mkdirs()) {
+    if (!this.dataFolder.exists() && !this.dataFolder.mkdirs()) {
       throw new RuntimeException("Error creating " + this.dataFolder.getPath() + " directory");
     }
   }
@@ -85,5 +84,9 @@ public abstract class Module {
 
   public ClassLoader getClassLoader() {
     return classLoader;
+  }
+
+  public Logger getLogger() {
+    return this.logger;
   }
 }

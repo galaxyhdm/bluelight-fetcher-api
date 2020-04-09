@@ -1,6 +1,7 @@
 package dev.markusk.bluelight.api.data;
 
 import dev.markusk.bluelight.api.AbstractFetcher;
+import dev.markusk.bluelight.api.interfaces.DataSettings;
 import dev.markusk.bluelight.api.objects.Article;
 import dev.markusk.bluelight.api.objects.Location;
 import dev.markusk.bluelight.api.objects.Topic;
@@ -10,7 +11,7 @@ import java.util.Set;
 
 public interface AbstractDataManager {
 
-  boolean initialize(AbstractFetcher abstractFetcher);
+  boolean initialize(AbstractFetcher abstractFetcher, DataSettings dataSettings);
 
   void close();
 
