@@ -1,6 +1,7 @@
 package dev.markusk.bluelight.api;
 
 import dev.markusk.bluelight.api.config.Configuration;
+import dev.markusk.bluelight.api.config.DataStore;
 import dev.markusk.bluelight.api.config.TargetConfiguration;
 import dev.markusk.bluelight.api.data.DataRegistry;
 import dev.markusk.bluelight.api.interfaces.AbstractExtractorRegistry;
@@ -30,6 +31,8 @@ public interface AbstractFetcher {
   AbstractScheduler getImportScheduler();
 
   Configuration getConfiguration();
+
+  DataStore getDataStore();
 
   File getWorkDir();
 

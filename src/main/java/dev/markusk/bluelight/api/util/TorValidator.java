@@ -11,7 +11,7 @@ public class TorValidator {
   private static final Logger LOGGER = LogManager.getLogger();
   private static final int MAX_ATTEMPTS = 2;
 
-  private boolean startTor;
+  private final boolean startTor;
   private int attempts;
 
   public TorValidator() {

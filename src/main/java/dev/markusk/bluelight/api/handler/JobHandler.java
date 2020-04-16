@@ -4,6 +4,8 @@ public interface JobHandler {
 
   void onStart();
 
+  void updateGauge(String targetUid, double value);
+
   void onEnd();
 
 }

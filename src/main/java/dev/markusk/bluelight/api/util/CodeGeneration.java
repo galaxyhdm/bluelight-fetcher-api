@@ -59,7 +59,7 @@ public class CodeGeneration {
     ALPHANUMERIC("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"),
     ALPHANUMRICUPPER("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"),
     NUMERIC("1234567890");
-    private String characters;
+    private final String characters;
 
     Mode(final String characters) {
       this.characters = characters;

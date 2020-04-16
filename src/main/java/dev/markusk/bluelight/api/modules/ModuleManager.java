@@ -31,7 +31,7 @@ public class ModuleManager {
     final Map<String, File> modules = new HashMap<>();
 
     for (final File file : Objects.requireNonNull(directory.listFiles())) {
-      if(file.isDirectory()) continue;
+      if (file.isDirectory()) continue;
       final ModuleDescription moduleDescription;
       try {
         moduleDescription = this.moduleLoader.getModuleDescription(file);

@@ -17,7 +17,7 @@ public class ConsoleController {
 
   private final boolean debug;
   private final String prompt;
-  private boolean startPrompt;
+  private final boolean startPrompt;
 
   private LineReader reader;
   private List<ConsoleHandler> handlers;
