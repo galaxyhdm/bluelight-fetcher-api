@@ -24,6 +24,8 @@ dependencies {
     api 'com.apptastic:rssreader:2.2.1' //https://github.com/w3stling/rssreader
     api 'org.jsoup:jsoup:1.12.1'
     api 'com.google.code.gson:gson:2.8.6'
+    // https://mvnrepository.com/artifact/commons-codec/commons-codec
+    api group: 'commons-codec', name: 'commons-codec', version: '1.14'
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
