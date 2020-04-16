@@ -1,6 +1,6 @@
 package dev.markusk.bluelight.api.config;
 
-import dev.markusk.bluelight.api.interfaces.DataSettings;
+import dev.markusk.bluelight.api.data.DataSettings;
 
 public class TargetConfiguration {
 

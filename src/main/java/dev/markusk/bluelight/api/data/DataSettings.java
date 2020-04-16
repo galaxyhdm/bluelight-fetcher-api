@@ -1,4 +1,4 @@
-package dev.markusk.bluelight.api.interfaces;
+package dev.markusk.bluelight.api.data;
 
 public class DataSettings {
 

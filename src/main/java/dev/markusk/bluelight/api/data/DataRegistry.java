@@ -1,7 +1,6 @@
 package dev.markusk.bluelight.api.data;
 
 import dev.markusk.bluelight.api.AbstractFetcher;
-import dev.markusk.bluelight.api.interfaces.DataSettings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
