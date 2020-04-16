@@ -10,4 +10,5 @@ public interface AbstractFetcherRegistry {
 
   HashMap<String, AbstractInfoFetcher> getFetcherMap();
 
+  AbstractInfoFetcher getInfoFetcher(String targetId);
 }
