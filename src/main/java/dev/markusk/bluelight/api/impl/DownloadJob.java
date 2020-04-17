@@ -67,7 +67,7 @@ public class DownloadJob extends AbstractDownloadJob {
     }
   }
 
-  private Article getArticle(final String fileIdentification, final String id) {
+  public Article getArticle(final String fileIdentification, final String id) {
     return new ArticleBuilder()
         .id(id).url(this.getBaseInfo().getUrl()).title(this.getBaseInfo().getTitle())
         .fetchTime(this.getBaseInfo().getFetchTime()).releaseTime(this.getBaseInfo().getReleaseTime())
@@ -82,7 +82,7 @@ public class DownloadJob extends AbstractDownloadJob {
     return this.getFetcher().getTargetConfiguration(this.getBaseInfo().getTargetUid());
   }
 
-  private String getFileIdentification() {
+  public String getFileIdentification() {
     final String fileIdentificationRaw = String
         .format("%s%s%s%s", this.getBaseInfo().getTargetUid(), this.getBaseInfo().getFetchTime(),
             this.getBaseInfo().getTitle(),
