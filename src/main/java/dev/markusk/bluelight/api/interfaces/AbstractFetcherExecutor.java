@@ -10,4 +10,5 @@ public interface AbstractFetcherExecutor {
 
   FetcherJob getFetcherJob(final String targetUid);
 
+  void stop();
 }

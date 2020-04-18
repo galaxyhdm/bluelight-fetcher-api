@@ -5,6 +5,7 @@ import dev.markusk.bluelight.api.config.DataStore;
 import dev.markusk.bluelight.api.config.TargetConfiguration;
 import dev.markusk.bluelight.api.data.DataRegistry;
 import dev.markusk.bluelight.api.interfaces.AbstractExtractorRegistry;
+import dev.markusk.bluelight.api.interfaces.AbstractFetcherExecutor;
 import dev.markusk.bluelight.api.interfaces.AbstractFetcherRegistry;
 import dev.markusk.bluelight.api.interfaces.AbstractScheduler;
 import dev.markusk.bluelight.api.modules.ModuleManager;
@@ -23,6 +24,8 @@ public interface AbstractFetcher {
   Logger getLogger();
 
   AbstractFetcherRegistry getFetcherRegistry();
+
+  AbstractFetcherExecutor getFetcherExecutor();
 
   AbstractExtractorRegistry getExtractorRegistry();
 
