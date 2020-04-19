@@ -76,8 +76,10 @@ public class RssFetcher implements AbstractInfoFetcher {
 
   /**
    * @param inputDate is a formatted date string
+   *                  <p>
    *                  This string can be null. This means that the pubDate could not be extracted from the RSS feed.
    *                  Then return null.
+   *                  <p>
    *                  Example: Fri, 13 Mar 2020 19:40:45 +0100
    * @return a date object in utc time zone!
    */

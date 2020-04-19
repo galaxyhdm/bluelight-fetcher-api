@@ -16,7 +16,10 @@ public interface AbstractInfoFetcher {
   void initialize(String targetUid, String fetchUrl, int updateTime);
 
   /**
-   * @return a list with {@link BaseFetchInfo} extracted from the fetch source. Sorted from new to old!
+   * @return a list with {@link BaseFetchInfo} extracted from the fetch source.
+   * <p>
+   * Sorted from new to old!
+   * <p>
    * throws {@link Exception} when something is not working
    */
   default List<BaseFetchInfo> getFetchInfos() throws Exception {
@@ -26,6 +29,7 @@ public interface AbstractInfoFetcher {
   /**
    * @param fetchTime this date represents the fetch time of the articles
    * @return a list with {@link BaseFetchInfo} extracted from the fetch source
+   * <p>
    * throws {@link Exception} when something is not working
    */
   List<BaseFetchInfo> getFetchInfos(Date fetchTime) throws Exception;

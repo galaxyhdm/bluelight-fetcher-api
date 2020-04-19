@@ -4,29 +4,35 @@ import java.util.Date;
 
 /**
  * This class is a representation of the needed fetch infos.
+ * <p>
  * Like the url and the title.
  */
 public class BaseFetchInfo {
 
   /**
    * This variable must be set
+   * <p>
    * This string is used for identify the target.
+   * <p>
    * Used for the content extractor and all other processes depends on the target.
    */
   private String targetUid;
   /**
    * This variable must be set
+   * <p>
    * This string links to the complete article.
    **/
   private String url;
   /**
    * This string represents the title of the article.
+   * <p>
    * Can be null
    */
   private String title;
 
   /**
    * This date represents the release time of the article
+   * <p>
    * Can be null.
    */
   private Date releaseTime;

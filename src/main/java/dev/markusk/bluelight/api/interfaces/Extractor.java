@@ -11,6 +11,7 @@ public interface Extractor {
   /**
    * @param url the article url
    * @return a unique id provided by the url. For example when the url ends with a unique id.
+   * <p>
    * When returning null getUniqueId is calling
    */
   String getIdFromUrl(String url);

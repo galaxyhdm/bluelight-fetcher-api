@@ -13,6 +13,10 @@ import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+/**
+ * Represents a module loader, which handles direct access to specific types
+ * of modules
+ */
 public class ModuleLoader {
 
   private static final Logger LOGGER = LogManager.getLogger();
@@ -25,6 +29,13 @@ public class ModuleLoader {
     this.abstractFetcher = abstractFetcher;
   }
 
+  /**
+   * Loads the {@link Module} contained in the specified file
+   *
+   * @param file {@link File} to attempt to load
+   * @return {@link Module} that was contained in the specified file, or null if this process was unsuccessful
+   * @throws InvalidModuleException Thrown when the specified file is not a plugin
+   */
   public Module loadModule(final File file) throws InvalidModuleException {
     if (file == null) throw new NullPointerException("File cannot be null");
 
@@ -58,6 +69,13 @@ public class ModuleLoader {
     return classLoader.getModule();
   }
 
+  /**
+   * Loads a {@link ModuleDescription} from the specified file
+   *
+   * @param file {@link File} to attempt to load from
+   * @return A new {@link ModuleDescription} loaded from module.json in the specified file
+   * @throws InvalidDescriptionException If the module description file could not be created
+   */
   public ModuleDescription getModuleDescription(final File file) throws InvalidDescriptionException {
     if (file == null) throw new NullPointerException("File cannot be null");
     try {
@@ -76,6 +94,13 @@ public class ModuleLoader {
     }
   }
 
+  /**
+   * Enables the specified {@link Module}
+   * <p>
+   * Attempting to enable a module that is already enabled will have no effect
+   *
+   * @param module {@link Module} to enable
+   */
   public void enableModule(final Module module) {
     if (!module.isEnabled()) {
       LOGGER.info("Enabling " + module.getDescription().getName());
@@ -88,6 +113,13 @@ public class ModuleLoader {
     }
   }
 
+  /**
+   * Disables the specified {@link Module}
+   * <p>
+   * Attempting to disable a module that is not enabled will have no effect
+   *
+   * @param module {@link Module} to enable
+   */
   public void disabledModule(final Module module) {
     if (module.isEnabled()) {
       LOGGER.info("Disabling " + module.getDescription().getName());
