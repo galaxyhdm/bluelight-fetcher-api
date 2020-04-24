@@ -1,16 +1,17 @@
 package dev.markusk.bluelight.api.data;
 
-import dev.markusk.bluelight.api.AbstractFetcher;
 import dev.markusk.bluelight.api.objects.Article;
 import dev.markusk.bluelight.api.objects.Location;
 import dev.markusk.bluelight.api.objects.Topic;
+import org.apache.logging.log4j.Logger;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 public interface AbstractDataManager {
 
-  boolean initialize(AbstractFetcher abstractFetcher, DataSettings dataSettings);
+  boolean initialize(Logger logger, DataSettings dataSettings);
 
   void close();
 
@@ -37,6 +38,21 @@ public interface AbstractDataManager {
    * @return the related {@link Article} object
    */
   Optional<Article> getArticle(String id, boolean loadTags);
+
+  /**
+   * This method doesn't load the related tags!
+   *
+   * @return a list with all articles
+   */
+  default List<Article> getArticles() {
+    return getArticles(false);
+  }
+
+  /**
+   * @param loadTags set true to load the related tags of this article
+   * @return a list with all articles
+   */
+  List<Article> getArticles(boolean loadTags);
 
   /**
    * This method can be used to update a {@link Article} in a datasource.

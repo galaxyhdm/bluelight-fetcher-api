@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataRegistry {
+public class DataRegistry { // TODO: 24.04.2020 make a interface and move implementation to miner
 
   private static final Logger LOGGER = LogManager.getLogger();
 
@@ -46,7 +46,7 @@ public class DataRegistry {
       LOGGER.error("Could not initialize data-manager");
       return null;
     }
-    abstractDataManager.initialize(this.fetcher, settings);
+    abstractDataManager.initialize(this.fetcher.getLogger(), settings);
     this.dataManagerMap.put(targetUid, abstractDataManager);
     return abstractDataManager;
   }

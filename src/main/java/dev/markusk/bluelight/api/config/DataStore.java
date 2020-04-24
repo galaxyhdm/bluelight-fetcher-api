@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class DataStore {
+public class DataStore { // TODO: 24.04.2020 make a interface and move implementation to miner
 
   private static final Logger LOGGER = LogManager.getLogger();
 

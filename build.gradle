@@ -3,6 +3,7 @@ import org.apache.tools.ant.filters.ReplaceTokens
 plugins {
     id 'java'
     id 'java-library'
+    id 'maven-publish'
     id 'com.github.johnrengelman.shadow' version '4.0.2'
 }
 
@@ -78,4 +79,23 @@ build {
 
     jar.mustRunAfter clean
     shadowJar.mustRunAfter sourcesJar
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact shadowJar
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name 'deploy'
+            url = "https://nexus.markusk.dev/repository/maven-releases/"
+            credentials {
+                username = repoUser
+                password = repoPassword
+            }
+        }
+    }
 }

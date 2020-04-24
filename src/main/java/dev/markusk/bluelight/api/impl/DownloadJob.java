@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class DownloadJob extends AbstractDownloadJob {
+public class DownloadJob extends AbstractDownloadJob { // TODO: 21.04.2020 Implements retry's
 
   private static final Logger LOGGER = LogManager.getLogger();
 
