@@ -2,7 +2,6 @@ package dev.markusk.bluelight.api;
 
 import dev.markusk.bluelight.api.config.Configuration;
 import dev.markusk.bluelight.api.config.TargetConfiguration;
-import dev.markusk.bluelight.api.data.DataRegistry;
 import dev.markusk.bluelight.api.interfaces.*;
 import dev.markusk.bluelight.api.modules.ModuleManager;
 import org.apache.logging.log4j.Logger;
@@ -13,7 +12,7 @@ public interface AbstractFetcher {
 
   void initialize();
 
-  DataRegistry getDataRegistry();
+  AbstractDataRegistry getDataRegistry();
 
   ModuleManager getModuleManager();
 
