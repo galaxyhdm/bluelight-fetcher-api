@@ -1,6 +1,5 @@
 package dev.markusk.bluelight.api.util;
 
-import dev.markusk.bluelight.api.interfaces.Extractor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,15 +9,14 @@ public class Utils {
 
   private static final Logger LOGGER = LogManager.getLogger();
 
-  public static Extractor getExtractor(final String path) {
+  public static <T> T getClass(final String path, final Class<T> classOfT) {
     try {
-      final Class<?> aClass = Class.forName(path);
-      final Object o = aClass.getDeclaredConstructor().newInstance();
-      if (o instanceof Extractor) return (Extractor) o;
-    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+      final Class<?> baseClass = Class.forName(path);
+      final Class<? extends T> subclass = baseClass.asSubclass(classOfT);
+      return subclass.getDeclaredConstructor().newInstance();
+    } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
       LOGGER.error("Error", e);
     }
     return null;
   }
-
 }

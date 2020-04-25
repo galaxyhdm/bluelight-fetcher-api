@@ -23,6 +23,7 @@ public class TargetConfiguration {
    */
   private Byte indexType;
   private String extractorPath;
+  private String fetcherPath;
   private String workDir;
   private DataSettings database;
 
@@ -72,6 +73,14 @@ public class TargetConfiguration {
 
   public void setExtractorPath(final String extractorPath) {
     this.extractorPath = extractorPath;
+  }
+
+  public String getFetcherPath() {
+    return fetcherPath;
+  }
+
+  public void setFetcherPath(final String fetcherPath) {
+    this.fetcherPath = fetcherPath;
   }
 
   public String getWorkDir() {
