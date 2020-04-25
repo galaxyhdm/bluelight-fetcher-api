@@ -25,7 +25,7 @@ public class FetcherJob extends AbstractFetcherJob {
     try {
       final List<BaseFetchInfo> fetchInfos = this.getInfoFetcher().getFetchInfos();
       final String lastUrl =
-          this.getFetcher().getDataStore().getLastUrl(this.getInfoFetcher().getTargetUid());
+          this.getFetcher().getUrlData().getLastUrl(this.getInfoFetcher().getTargetUid());
       final List<BaseFetchInfo> baseFetchInfos = this.getFilteredInfos(fetchInfos, lastUrl);
 
       if (this.isDownload())
@@ -39,8 +39,8 @@ public class FetcherJob extends AbstractFetcherJob {
       if (baseFetchInfos.size() > 0) {
         final String lastFetchedUrl = baseFetchInfos.get(0).getUrl();
         LOGGER.info(this.getInfoFetcher().getTargetUid() + " | lastUrl=" + lastFetchedUrl);
-        this.getFetcher().getDataStore().setLastUrl(this.getInfoFetcher().getTargetUid(), lastFetchedUrl);
-        this.getFetcher().getDataStore().saveMap();
+        this.getFetcher().getUrlData().setLastUrl(this.getInfoFetcher().getTargetUid(), lastFetchedUrl);
+        this.getFetcher().getUrlData().save();
       }
     } catch (Exception e) {
       LOGGER.error(String.format("Error while fetching infos from: %s", this.getInfoFetcher().getTargetUid()), e);
