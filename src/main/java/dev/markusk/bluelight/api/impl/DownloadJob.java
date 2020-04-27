@@ -17,9 +17,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class DownloadJob extends AbstractDownloadJob { // TODO: 21.04.2020 Implements retry's
+public class DownloadJob extends AbstractDownloadJob {
 
+  public static final int MAX_TRIES = Integer.parseInt(System.getenv("MAX_TRIES"));
   private static final Logger LOGGER = LogManager.getLogger();
+  private int tries = 1;
 
   public DownloadJob(final BaseFetchInfo baseInfo, final AbstractFetcher fetcher) {
     super(baseInfo, fetcher);
@@ -53,13 +55,19 @@ public class DownloadJob extends AbstractDownloadJob { // TODO: 21.04.2020 Imple
             article.getFileIdentification()));
     LOGGER.debug(this.getBaseInfo().getTargetUid() + " | " + Arrays.toString(commandArray));
 
-    try {
-      final Process process =
-          new ProcessBuilder(commandArray).redirectErrorStream(true).directory(targetWorkDir).start();
-      process.waitFor();
-    } catch (IOException | InterruptedException e) {
-      LOGGER.error("Error while downloading", e);
-    }
+    do {
+      try {
+        final Process process =
+            new ProcessBuilder(commandArray).redirectErrorStream(true).directory(targetWorkDir).start();
+        final int exitCode = process.waitFor();
+        LOGGER.debug(String.format("Try: %s | Exit-Code: %s", this.tries, exitCode));
+        if (exitCode == 0) break;
+        this.tries++;
+      } catch (IOException | InterruptedException e) {
+        LOGGER.error("Error while downloading", e);
+      }
+    } while (this.tries <= MAX_TRIES);
+
 
     if (configuration.isAutoIndex()) {
       this.getFetcher().getImportScheduler()
