@@ -14,8 +14,8 @@ public class FetcherJob extends AbstractFetcherJob {
   private static final Logger LOGGER = LogManager.getLogger();
 
   public FetcherJob(final AbstractFetcher fetcher,
-      final AbstractInfoFetcher infoFetcher, final boolean noDownload) {
-    super(fetcher, infoFetcher, noDownload);
+      final AbstractInfoFetcher infoFetcher, final boolean download) {
+    super(fetcher, infoFetcher, download);
   }
 
   @Override
@@ -29,10 +29,8 @@ public class FetcherJob extends AbstractFetcherJob {
       final List<BaseFetchInfo> baseFetchInfos = this.getFilteredInfos(fetchInfos, lastUrl);
 
       if (this.isDownload())
-        baseFetchInfos.forEach(baseFetchInfo -> {
-          this.getFetcher().getDownloadScheduler()
-              .scheduleJob(new DownloadJob(baseFetchInfo, this.getFetcher()));
-        });
+        baseFetchInfos.forEach(baseFetchInfo ->
+            this.getFetcher().getDownloadScheduler().scheduleJob(new DownloadJob(baseFetchInfo, this.getFetcher())));
 
       LOGGER.info(this.getInfoFetcher().getTargetUid() + " | New article count: " + baseFetchInfos.size());
       if (jobHandler != null) jobHandler.updateGauge(this.getInfoFetcher().getTargetUid(), baseFetchInfos.size());
