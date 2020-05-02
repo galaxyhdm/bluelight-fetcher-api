@@ -19,8 +19,11 @@ import java.util.stream.Stream;
 
 public class DownloadJob extends AbstractDownloadJob {
 
-  public static final int MAX_TRIES = Integer.parseInt(System.getenv("MAX_TRIES"));
+  public static final int MAX_TRIES =
+      System.getenv("MAX_TRIES") != null ? Integer.parseInt(System.getenv("MAX_TRIES")) : 3;
+
   private static final Logger LOGGER = LogManager.getLogger();
+
   private int tries = 1;
 
   public DownloadJob(final BaseFetchInfo baseInfo, final AbstractFetcher fetcher) {
