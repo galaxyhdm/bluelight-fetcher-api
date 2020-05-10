@@ -85,7 +85,7 @@ public class ImportJob extends AbstractImportJob {
       this.getArticle().setTopicTags(topics);
       dataManager.updateTopicLinks(this.getArticle());
     } else {
-      LOGGER.warn("Topics for article %s are null. Indexing skipped!");
+      LOGGER.warn(String.format("Topics for article %s are null. Indexing skipped!", this.getArticle().getId()));
     }
   }
 
@@ -96,7 +96,7 @@ public class ImportJob extends AbstractImportJob {
       this.getArticle().setLocationTags(locations);
       dataManager.updateLocationLinks(this.getArticle());
     } else {
-      LOGGER.warn("Locations for article %s are null. Indexing skipped!");
+      LOGGER.warn(String.format("Locations for article %s are null. Indexing skipped!", this.getArticle().getId()));
     }
   }
 
