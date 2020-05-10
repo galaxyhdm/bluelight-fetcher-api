@@ -25,6 +25,7 @@ public class TargetConfiguration {
   private String extractorPath;
   private String fetcherPath;
   private String workDir;
+  private String suffix;
   private DataSettings database;
 
   public String getFetchUrl() {
@@ -89,6 +90,14 @@ public class TargetConfiguration {
 
   public void setWorkDir(final String workDir) {
     this.workDir = workDir;
+  }
+
+  public String getSuffix() {
+    return this.suffix;
+  }
+
+  public void setSuffix(final String suffix) {
+    this.suffix = suffix;
   }
 
   public DataSettings getDatabase() {

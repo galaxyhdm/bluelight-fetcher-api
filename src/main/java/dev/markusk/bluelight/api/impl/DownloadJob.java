@@ -7,6 +7,7 @@ import dev.markusk.bluelight.api.config.TargetConfiguration;
 import dev.markusk.bluelight.api.interfaces.Extractor;
 import dev.markusk.bluelight.api.job.AbstractDownloadJob;
 import dev.markusk.bluelight.api.objects.Article;
+import dev.markusk.bluelight.api.util.FileUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,8 +45,9 @@ public class DownloadJob extends AbstractDownloadJob {
     final File targetWorkDir = new File(this.getFetcher().getWorkDir(), configuration.getWorkDir());
 
     String[] commandArray =
-        {"curl", "-A", "'" + pickUserAgent() + "'", this.getBaseInfo().getUrl(), "-L", "-o",
-            article.getFileIdentification() + ".html"};
+        {"curl", "-A", String.format("'%s'", pickUserAgent()), this.getBaseInfo().getUrl(), "-L", "-o",
+            String.format("%s%s", article.getFileIdentification(), FileUtils.buildFileSuffix(configuration.getSuffix()))
+        };
 
     if (configuration.isTor()) {
       String[] torCommand = {"torsocks", "-i"};

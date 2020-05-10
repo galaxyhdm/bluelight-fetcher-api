@@ -9,6 +9,7 @@ import dev.markusk.bluelight.api.job.AbstractImportJob;
 import dev.markusk.bluelight.api.objects.Article;
 import dev.markusk.bluelight.api.objects.Location;
 import dev.markusk.bluelight.api.objects.Topic;
+import dev.markusk.bluelight.api.util.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -45,7 +46,8 @@ public class ImportJob extends AbstractImportJob {
 
     if (importStates.isEmpty()) return;
     final Extractor extractor = this.getFetcher().getExtractorRegistry().getExtractor(this.getTargetUid());
-    final File articleFile = new File(this.getWorkDir(), article.getFileIdentification() + ".html");
+    final File articleFile = new File(this.getWorkDir(),
+        String.format("%s%s", article.getFileIdentification(), FileUtils.buildFileSuffix(configuration.getSuffix())));
 
     try {
       final Document parse = Jsoup.parse(articleFile, StandardCharsets.UTF_8.name());
