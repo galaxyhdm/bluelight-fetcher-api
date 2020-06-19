@@ -37,7 +37,10 @@ public class ImportJob extends AbstractImportJob {
         article.getFileIdentification()));
 
     final TargetConfiguration configuration = this.getFetcher().getTargetConfiguration(this.getTargetUid());
-    final List<ImportState> importStates = ImportState.getImportStates(configuration.getIndexType());
+    if (configuration.getImportStates() == null) {
+      configuration.setImportStates(ImportState.getImportStates(configuration.getIndexType()));
+    }
+    final List<ImportState> importStates = configuration.getImportStates();
 
     final AbstractDataManager dataManager = this.getFetcher().getDataRegistry().getDataManager(this.getTargetUid());
     if (dataManager == null) return;

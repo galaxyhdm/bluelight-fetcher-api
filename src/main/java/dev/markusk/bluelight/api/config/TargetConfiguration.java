@@ -1,6 +1,9 @@
 package dev.markusk.bluelight.api.config;
 
 import dev.markusk.bluelight.api.data.DataSettings;
+import dev.markusk.bluelight.api.enums.ImportState;
+
+import java.util.List;
 
 public class TargetConfiguration {
 
@@ -27,6 +30,8 @@ public class TargetConfiguration {
   private String workDir;
   private String suffix;
   private DataSettings database;
+
+  private List<ImportState> importStates;
 
   public String getFetchUrl() {
     return fetchUrl;
@@ -106,5 +111,13 @@ public class TargetConfiguration {
 
   public void setDatabase(final DataSettings database) {
     this.database = database;
+  }
+
+  public List<ImportState> getImportStates() {
+    return this.importStates;
+  }
+
+  public void setImportStates(final List<ImportState> importStates) {
+    this.importStates = importStates;
   }
 }
