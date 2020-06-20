@@ -118,7 +118,9 @@ publishing {
     repositories {
         maven {
             name 'deploy'
-            url = "https://nexus.markusk.dev/repository/maven-releases/"
+			def releasesRepoUrl = "https://nexus.markusk.dev/repository/maven-releases/"
+			def snapshotsRepoUrl = "https://nexus.markusk.dev/repository/maven-snapshots/"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
                 username = project.hasProperty('repoUser') ? project.property('repoUser') : 'user'
                 password = project.hasProperty('repoPassword') ? project.property('repoPassword') : 'password'
