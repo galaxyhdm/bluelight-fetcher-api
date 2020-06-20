@@ -1,28 +1,33 @@
 package dev.markusk.bluelight.api.enums;
 
+import dev.markusk.bluelight.api.handler.ImportContentHandler;
+import dev.markusk.bluelight.api.handler.ImportLocationHandler;
+import dev.markusk.bluelight.api.handler.ImportTopicHandler;
+import dev.markusk.bluelight.api.interfaces.ImportHandler;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public enum ImportState {
 
-  LOCATIONS((byte) 1),
-  TOPICS((byte) 2),
-  CONTENT((byte) 4);
+  LOCATIONS((byte) 1, new ImportLocationHandler()),
+  TOPICS((byte) 2, new ImportTopicHandler()),
+  CONTENT((byte) 4, new ImportContentHandler());
 
   private final byte value;
+  private final ImportHandler handler;
 
-  ImportState(final byte value) {
+  ImportState(final byte value, final ImportHandler handler) {
     this.value = value;
+    this.handler = handler;
   }
 
   public static ImportState[] reverse() {
-    ImportState[] importStates = new ImportState[ImportState.values().length];
-    int j = ImportState.values().length;
-    for (int i = 0; i < ImportState.values().length; i++) {
-      importStates[j - 1] = ImportState.values()[i];
-      j = j - 1;
-    }
-    return importStates;
+    final List<ImportState> importStates = Arrays.asList(ImportState.values());
+    Collections.reverse(importStates);
+    return importStates.toArray(ImportState[]::new);
   }
 
   public static List<ImportState> getImportStates(final byte value) {
@@ -40,7 +45,10 @@ public enum ImportState {
   }
 
   public byte getValue() {
-    return value;
+    return this.value;
   }
 
+  public ImportHandler getHandler() {
+    return this.handler;
+  }
 }
