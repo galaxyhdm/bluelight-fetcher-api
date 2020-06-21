@@ -1,55 +1,124 @@
 package dev.markusk.bluelight.api.config;
 
 import dev.markusk.bluelight.api.data.DataSettings;
-import dev.markusk.bluelight.api.data.DataSettingsImpl;
 import dev.markusk.bluelight.api.enums.ImportState;
 
 import java.util.List;
 
-public interface TargetConfiguration {
+public class TargetConfiguration {
 
-  String getFetchUrl();
+  private String fetchUrl;
+  private Integer updateTime;
+  private Boolean tor;
+  private Boolean autoIndex;
 
-  void setFetchUrl(String fetchUrl);
+  /**
+   * 1 = locations
+   * 2 = topics
+   * 4 = content
+   * <p>
+   * mean:
+   * - 1 = locations only
+   * - 3 = locations + topics
+   * - 5 = location + content
+   * - 6 = topic + content
+   * - 7 = location + topic + content
+   */
+  private Byte indexType;
+  private String extractorPath;
+  private String fetcherPath;
+  private String workDir;
+  private String suffix;
+  private DataSettings database;
 
-  int getUpdateTime();
+  private List<ImportState> importStates;
 
-  void setUpdateTime(int updateTime);
+  public String getFetchUrl() {
+    return fetchUrl;
+  }
 
-  boolean isTor();
+  public void setFetchUrl(final String fetchUrl) {
+    this.fetchUrl = fetchUrl;
+  }
 
-  void setTor(boolean tor);
+  public int getUpdateTime() {
+    return updateTime;
+  }
 
-  boolean isAutoIndex();
+  public void setUpdateTime(final int updateTime) {
+    this.updateTime = updateTime;
+  }
 
-  void setAutoIndex(boolean autoIndex);
+  public boolean isTor() {
+    return tor;
+  }
 
-  byte getIndexType();
+  public void setTor(final boolean tor) {
+    this.tor = tor;
+  }
 
-  void setIndexType(byte indexType);
+  public boolean isAutoIndex() {
+    return autoIndex;
+  }
 
-  String getExtractorPath();
+  public void setAutoIndex(final boolean autoIndex) {
+    this.autoIndex = autoIndex;
+  }
 
-  void setExtractorPath(String extractorPath);
+  public byte getIndexType() {
+    return indexType;
+  }
 
-  String getFetcherPath();
+  public void setIndexType(final byte indexType) {
+    this.indexType = indexType;
+  }
 
-  void setFetcherPath(String fetcherPath);
+  public String getExtractorPath() {
+    return extractorPath;
+  }
 
-  String getWorkDir();
+  public void setExtractorPath(final String extractorPath) {
+    this.extractorPath = extractorPath;
+  }
 
-  void setWorkDir(String workDir);
+  public String getFetcherPath() {
+    return fetcherPath;
+  }
 
-  String getSuffix();
+  public void setFetcherPath(final String fetcherPath) {
+    this.fetcherPath = fetcherPath;
+  }
 
-  void setSuffix(String suffix);
+  public String getWorkDir() {
+    return workDir;
+  }
 
-  DataSettings getDatabase();
+  public void setWorkDir(final String workDir) {
+    this.workDir = workDir;
+  }
 
-  void setDatabase(DataSettingsImpl database);
+  public String getSuffix() {
+    return this.suffix;
+  }
 
-  List<ImportState> getImportStates();
+  public void setSuffix(final String suffix) {
+    this.suffix = suffix;
+  }
 
-  void setImportStates(List<ImportState> importStates);
+  public DataSettings getDatabase() {
+    return this.database;
+  }
+
+  public void setDatabase(final DataSettings database) {
+    this.database = database;
+  }
+
+  public List<ImportState> getImportStates() {
+    return this.importStates;
+  }
+
+  public void setImportStates(final List<ImportState> importStates) {
+    this.importStates = importStates;
+  }
 
 }
