@@ -1,6 +1,7 @@
 package dev.markusk.bluelight.api.config;
 
 import dev.markusk.bluelight.api.data.DataSettings;
+import dev.markusk.bluelight.api.data.DataSettingsImpl;
 import dev.markusk.bluelight.api.enums.ImportState;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class TargetConfigurationImpl implements TargetConfiguration {
   private String fetcherPath;
   private String workDir;
   private String suffix;
-  private DataSettings database;
+  private DataSettingsImpl database;
 
   private List<ImportState> importStates;
 
@@ -129,7 +130,7 @@ public class TargetConfigurationImpl implements TargetConfiguration {
   }
 
   @Override
-  public void setDatabase(final DataSettings database) {
+  public void setDatabase(final DataSettingsImpl database) {
     this.database = database;
   }
 

@@ -1,6 +1,7 @@
 package dev.markusk.bluelight.api.config;
 
 import dev.markusk.bluelight.api.data.DataSettings;
+import dev.markusk.bluelight.api.data.DataSettingsImpl;
 import dev.markusk.bluelight.api.enums.ImportState;
 
 import java.util.List;
@@ -45,7 +46,7 @@ public interface TargetConfiguration {
 
   DataSettings getDatabase();
 
-  void setDatabase(DataSettings database);
+  void setDatabase(DataSettingsImpl database);
 
   List<ImportState> getImportStates();
 
