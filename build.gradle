@@ -40,8 +40,8 @@ dependencies {
 // https://github.com/passsy/gradle-gitVersioner-plugin
 apply plugin: 'com.pascalwelsch.gitversioner'
 gitVersioner {
-    def base = System.getenv('base')
-    def snap = System.getenv('snap')
+    def base = System.getenv('BASE')
+    def snap = System.getenv('SNAP')
     baseBranch base == null ? 'development' : base
     def snapshot = snap == null ? true : snap != 'false'
     addSnapshot snapshot
@@ -57,7 +57,7 @@ gitVersioner {
 group 'dev.markusk'
 version gitVersioner.versionName
 
-processResources{
+processResources {
     filter(ReplaceTokens, tokens: [VERSION: version])
 }
 
@@ -116,12 +116,12 @@ publishing {
     repositories {
         maven {
             name 'deploy'
-			def releasesRepoUrl = "https://nexus.markusk.dev/repository/maven-releases/"
-			def snapshotsRepoUrl = "https://nexus.markusk.dev/repository/maven-snapshots/"
+            def releasesRepoUrl = "https://nexus.markusk.dev/repository/maven-releases/"
+            def snapshotsRepoUrl = "https://nexus.markusk.dev/repository/maven-snapshots/"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
             credentials {
-                username = project.hasProperty('repoUser') ? project.property('repoUser') : 'user'
-                password = project.hasProperty('repoPassword') ? project.property('repoPassword') : 'password'
+                username = project.hasProperty('repoUser') ? project.property('repoUser') : System.getenv('REPO_USER')
+                password = project.hasProperty('repoPassword') ? project.property('repoPassword') : System.getenv('REPO_PASSWORD')
             }
         }
     }

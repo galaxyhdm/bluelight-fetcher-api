@@ -1,0 +1,21 @@
+name: Build and publish on push master
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Gradle build and publish
+        run: gradle build publish
+        with:
+          BASE: master
+          SNAP: false
+          REPO_USER: ${{ secrets.REPO_USER }}
+          REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}

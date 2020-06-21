@@ -9,9 +9,9 @@ public interface Configuration {
 
   void setModuleFolder(String moduleFolder);
 
-  Map<String, TargetConfiguration> getTargets();
+  Map<String, TargetConfigurationImpl> getTargets();
 
-  void setTargets(Map<String, TargetConfiguration> targets);
+  void setTargets(Map<String, TargetConfigurationImpl> targets);
 
   List<String> getUserAgents();
 
