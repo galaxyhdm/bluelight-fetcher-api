@@ -7,63 +7,26 @@ import dev.markusk.bluelight.api.objects.Topic;
 import java.util.Date;
 import java.util.Set;
 
-public class ArticleBuilder {
-  private String id;
-  private String title;
-  private String url;
-  private Date releaseTime;
-  private Date fetchTime;
-  private String fileIdentification;
-  private Set<Location> locationTags;
-  private Set<Topic> topicTags;
-  private String content;
+public interface ArticleBuilder {
 
-  public ArticleBuilder id(final String id) {
-    this.id = id;
-    return this;
-  }
+  ArticleBuilder id(String id);
 
-  public ArticleBuilder title(final String title) {
-    this.title = title;
-    return this;
-  }
+  ArticleBuilder title(String title);
 
-  public ArticleBuilder url(final String url) {
-    this.url = url;
-    return this;
-  }
+  ArticleBuilder url(String url);
 
-  public ArticleBuilder releaseTime(final Date releaseTime) {
-    this.releaseTime = releaseTime;
-    return this;
-  }
+  ArticleBuilder releaseTime(Date releaseTime);
 
-  public ArticleBuilder fetchTime(final Date fetchTime) {
-    this.fetchTime = fetchTime;
-    return this;
-  }
+  ArticleBuilder fetchTime(Date fetchTime);
 
-  public ArticleBuilder fileIdentification(final String fileIdentification) {
-    this.fileIdentification = fileIdentification;
-    return this;
-  }
+  ArticleBuilder fileIdentification(String fileIdentification);
 
-  public ArticleBuilder locationTags(final Set<Location> locationTags) {
-    this.locationTags = locationTags;
-    return this;
-  }
+  ArticleBuilder locationTags(Set<Location> locationTags);
 
-  public ArticleBuilder topicTags(final Set<Topic> topicTags) {
-    this.topicTags = topicTags;
-    return this;
-  }
+  ArticleBuilder topicTags(Set<Topic> topicTags);
 
-  public ArticleBuilder content(final String content) {
-    this.content = content;
-    return this;
-  }
+  ArticleBuilder content(String content);
 
-  public Article createArticle() {
-    return new Article(id, title, url, releaseTime, fetchTime, fileIdentification, locationTags, topicTags, content);
-  }
+  Article createArticle();
+
 }

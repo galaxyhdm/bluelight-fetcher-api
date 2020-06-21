@@ -5,119 +5,50 @@ import dev.markusk.bluelight.api.enums.ImportState;
 
 import java.util.List;
 
-public class TargetConfiguration {
+public interface TargetConfiguration {
 
-  private String fetchUrl;
-  private Integer updateTime;
-  private Boolean tor;
-  private Boolean autoIndex;
+  String getFetchUrl();
 
-  /**
-   * 1 = locations
-   * 2 = topics
-   * 4 = content
-   * <p>
-   * mean:
-   * - 1 = locations only
-   * - 3 = locations + topics
-   * - 5 = location + content
-   * - 6 = topic + content
-   * - 7 = location + topic + content
-   */
-  private Byte indexType;
-  private String extractorPath;
-  private String fetcherPath;
-  private String workDir;
-  private String suffix;
-  private DataSettings database;
+  void setFetchUrl(String fetchUrl);
 
-  private List<ImportState> importStates;
+  int getUpdateTime();
 
-  public String getFetchUrl() {
-    return fetchUrl;
-  }
+  void setUpdateTime(int updateTime);
 
-  public void setFetchUrl(final String fetchUrl) {
-    this.fetchUrl = fetchUrl;
-  }
+  boolean isTor();
 
-  public int getUpdateTime() {
-    return updateTime;
-  }
+  void setTor(boolean tor);
 
-  public void setUpdateTime(final int updateTime) {
-    this.updateTime = updateTime;
-  }
+  boolean isAutoIndex();
 
-  public boolean isTor() {
-    return tor;
-  }
+  void setAutoIndex(boolean autoIndex);
 
-  public void setTor(final boolean tor) {
-    this.tor = tor;
-  }
+  byte getIndexType();
 
-  public boolean isAutoIndex() {
-    return autoIndex;
-  }
+  void setIndexType(byte indexType);
 
-  public void setAutoIndex(final boolean autoIndex) {
-    this.autoIndex = autoIndex;
-  }
+  String getExtractorPath();
 
-  public byte getIndexType() {
-    return indexType;
-  }
+  void setExtractorPath(String extractorPath);
 
-  public void setIndexType(final byte indexType) {
-    this.indexType = indexType;
-  }
+  String getFetcherPath();
 
-  public String getExtractorPath() {
-    return extractorPath;
-  }
+  void setFetcherPath(String fetcherPath);
 
-  public void setExtractorPath(final String extractorPath) {
-    this.extractorPath = extractorPath;
-  }
+  String getWorkDir();
 
-  public String getFetcherPath() {
-    return fetcherPath;
-  }
+  void setWorkDir(String workDir);
 
-  public void setFetcherPath(final String fetcherPath) {
-    this.fetcherPath = fetcherPath;
-  }
+  String getSuffix();
 
-  public String getWorkDir() {
-    return workDir;
-  }
+  void setSuffix(String suffix);
 
-  public void setWorkDir(final String workDir) {
-    this.workDir = workDir;
-  }
+  DataSettings getDatabase();
 
-  public String getSuffix() {
-    return this.suffix;
-  }
+  void setDatabase(DataSettings database);
 
-  public void setSuffix(final String suffix) {
-    this.suffix = suffix;
-  }
+  List<ImportState> getImportStates();
 
-  public DataSettings getDatabase() {
-    return this.database;
-  }
+  void setImportStates(List<ImportState> importStates);
 
-  public void setDatabase(final DataSettings database) {
-    this.database = database;
-  }
-
-  public List<ImportState> getImportStates() {
-    return this.importStates;
-  }
-
-  public void setImportStates(final List<ImportState> importStates) {
-    this.importStates = importStates;
-  }
 }

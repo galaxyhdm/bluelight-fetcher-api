@@ -1,24 +1,13 @@
 package dev.markusk.bluelight.api.data;
 
-public class DataSettings {
+public interface DataSettings {
 
-  private String adapterName;
-  // "jdbc:postgresql://localhost/test?user=fred&password=secret&ssl=true";
-  private String connectionUrl;
+  String getAdapterName();
 
-  public String getAdapterName() {
-    return this.adapterName;
-  }
+  void setAdapterName(String adapterName);
 
-  public void setAdapterName(final String adapterName) {
-    this.adapterName = adapterName;
-  }
+  String getConnectionUrl();
 
-  public String getConnectionUrl() {
-    return this.connectionUrl;
-  }
-
-  public void setConnectionUrl(final String connectionUrl) {
-    this.connectionUrl = connectionUrl;
-  }
+  void setConnectionUrl(String connectionUrl);
+  
 }

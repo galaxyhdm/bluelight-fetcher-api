@@ -6,14 +6,14 @@ import dev.markusk.bluelight.api.interfaces.AbstractInfoFetcher;
 
 import java.util.TimerTask;
 
-public abstract class AbstractFetcherJob extends TimerTask {
+public abstract class FetcherJob extends TimerTask {
 
   private final AbstractFetcher fetcher;
   private final AbstractInfoFetcher infoFetcher;
   private final boolean download;
   private JobHandler jobHandler;
 
-  public AbstractFetcherJob(final AbstractFetcher fetcher, final AbstractInfoFetcher infoFetcher,
+  public FetcherJob(final AbstractFetcher fetcher, final AbstractInfoFetcher infoFetcher,
       final boolean download) {
     this.fetcher = fetcher;
     this.infoFetcher = infoFetcher;

@@ -3,33 +3,18 @@ package dev.markusk.bluelight.api.config;
 import java.util.List;
 import java.util.Map;
 
-public final class Configuration {
+public interface Configuration {
 
-  private String moduleFolder;
-  private Map<String, TargetConfiguration> targets;
-  private List<String> userAgents;
+  String getModuleFolder();
 
-  public String getModuleFolder() {
-    return moduleFolder;
-  }
+  void setModuleFolder(String moduleFolder);
 
-  public void setModuleFolder(final String moduleFolder) {
-    this.moduleFolder = moduleFolder;
-  }
+  Map<String, TargetConfiguration> getTargets();
 
-  public Map<String, TargetConfiguration> getTargets() {
-    return targets;
-  }
+  void setTargets(Map<String, TargetConfiguration> targets);
 
-  public void setTargets(final Map<String, TargetConfiguration> targets) {
-    this.targets = targets;
-  }
+  List<String> getUserAgents();
 
-  public List<String> getUserAgents() {
-    return userAgents;
-  }
+  void setUserAgents(List<String> userAgents);
 
-  public void setUserAgents(final List<String> userAgents) {
-    this.userAgents = userAgents;
-  }
 }

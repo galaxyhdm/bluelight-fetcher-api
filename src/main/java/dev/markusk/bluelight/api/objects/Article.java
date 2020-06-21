@@ -1,39 +1,13 @@
 package dev.markusk.bluelight.api.objects;
 
+
 import java.util.Date;
 import java.util.Set;
 
 /**
  * This class is a representation for a fetched article from a website or rss-feed.
  */
-public class Article {
-
-  private String id;
-  private String title;
-  private String url;
-  private Date releaseTime;
-  private Date fetchTime;
-  private String fileIdentification;
-  private Set<Location> locationTags;
-  private Set<Topic> topicTags;
-  private String content;
-
-  public Article() {
-  }
-
-  public Article(final String id, final String title, final String url, final Date releaseTime, final Date fetchTime,
-      final String fileIdentification, final Set<Location> locationTags,
-      final Set<Topic> topicTags, final String content) {
-    this.id = id;
-    this.title = title;
-    this.url = url;
-    this.releaseTime = releaseTime;
-    this.fetchTime = fetchTime;
-    this.fileIdentification = fileIdentification;
-    this.locationTags = locationTags;
-    this.topicTags = topicTags;
-    this.content = content;
-  }
+public interface Article {
 
   /**
    * This method can return a id provided by the fetch target
@@ -41,64 +15,44 @@ public class Article {
    *
    * @return a unique id as string
    */
-  public String getId() {
-    return this.id;
-  }
+  String getId();
 
-  public void setId(String id) {
-    this.id = id;
-  }
+  void setId(String id);
 
   /**
    * @return the fetched title of the article
    */
-  public String getTitle() {
-    return this.title;
-  }
+  String getTitle();
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+  void setTitle(String title);
 
   /**
    * @return the download url for the whole article
    */
-  public String getUrl() {
-    return this.url;
-  }
+  String getUrl();
 
-  public void setUrl(String url) {
-    this.url = url;
-  }
+  void setUrl(String url);
 
   /**
    * Nullable
    *
    * @return the release time of the article
    */
-  public Date getReleaseTime() {
-    return this.releaseTime;
-  }
+  Date getReleaseTime();
 
   /**
    * Nullable
    *
    * @param releaseTime the release time of the article
    */
-  public void setReleaseTime(Date releaseTime) {
-    this.releaseTime = releaseTime;
-  }
+  void setReleaseTime(Date releaseTime);
 
   /**
    * @return the fetch time of the article
    */
-  public Date getFetchTime() {
-    return this.fetchTime;
-  }
+  Date getFetchTime();
 
-  public void setFetchTime(Date fetchTime) {
-    this.fetchTime = fetchTime;
-  }
+  void setFetchTime(Date fetchTime);
 
   /**
    * The identification can be a SHA-256 hash of other parameters or a random string
@@ -106,13 +60,9 @@ public class Article {
    *
    * @return a unique identification for the downloaded file (without file-extension)
    */
-  public String getFileIdentification() {
-    return this.fileIdentification;
-  }
+  String getFileIdentification();
 
-  public void setFileIdentification(String fileIdentification) {
-    this.fileIdentification = fileIdentification;
-  }
+  void setFileIdentification(String fileIdentification);
 
   /**
    * Nullable
@@ -122,13 +72,9 @@ public class Article {
    *
    * @return a list with @{@link Location} objects
    */
-  public Set<Location> getLocationTags() {
-    return this.locationTags;
-  }
+  Set<Location> getLocationTags();
 
-  public void setLocationTags(Set<Location> locationTags) {
-    this.locationTags = locationTags;
-  }
+  void setLocationTags(Set<Location> locationTags);
 
   /**
    * Nullable
@@ -137,13 +83,9 @@ public class Article {
    *
    * @return a list with @{@link Topic} objects
    */
-  public Set<Topic> getTopicTags() {
-    return this.topicTags;
-  }
+  Set<Topic> getTopicTags();
 
-  public void setTopicTags(Set<Topic> topicTags) {
-    this.topicTags = topicTags;
-  }
+  void setTopicTags(Set<Topic> topicTags);
 
   /**
    * Nullable
@@ -152,11 +94,7 @@ public class Article {
    *
    * @return the written content of the article
    */
-  public String getContent() {
-    return this.content;
-  }
+  String getContent();
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+  void setContent(String content);
 }

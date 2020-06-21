@@ -1,70 +1,44 @@
 package dev.markusk.bluelight.api.objects;
 
-public class Location {
-
-  private String id;
-  private String locationName;
-  private Double latitude;
-  private Double longitude;
-  private boolean indexed;
+public interface Location {
 
   /**
    * @return a unique id as string
    */
-  public String getId() {
-    return this.id;
-  }
+  String getId();
 
-  public void setId(String id) {
-    this.id = id;
-  }
+  void setId(String id);
 
   /**
    * @return the location name (example: Germany)
    */
-  public String getLocationName() {
-    return this.locationName;
-  }
+  String getLocationName();
 
-  public void setLocationName(String locationName) {
-    this.locationName = locationName;
-  }
+  void setLocationName(String locationName);
 
   /**
    * Nullable
    *
    * @return the latitude of the location
    */
-  public Double getLatitude() {
-    return this.latitude;
-  }
+  Double getLatitude();
 
-  public void setLatitude(Double latitude) {
-    this.latitude = latitude;
-  }
+  void setLatitude(Double latitude);
 
   /**
    * Nullable
    *
    * @return the longitude of the location
    */
-  public Double getLongitude() {
-    return this.longitude;
-  }
+  Double getLongitude();
 
-  public void setLongitude(Double longitude) {
-    this.longitude = longitude;
-  }
+  void setLongitude(Double longitude);
 
   /**
    * @return true when the system tried to set latitude and longitude
    */
-  public boolean isIndexed() {
-    return this.indexed;
-  }
+  boolean isIndexed();
 
-  public void setIndexed(boolean indexed) {
-    this.indexed = indexed;
-  }
+  void setIndexed(boolean indexed);
 
 }

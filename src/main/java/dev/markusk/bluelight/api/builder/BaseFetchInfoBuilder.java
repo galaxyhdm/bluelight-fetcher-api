@@ -1,42 +1,21 @@
 package dev.markusk.bluelight.api.builder;
 
-import dev.markusk.bluelight.api.impl.BaseFetchInfo;
+import dev.markusk.bluelight.api.interfaces.BaseFetchInfo;
 
 import java.util.Date;
 
-public class BaseFetchInfoBuilder {
-  private String targetUid;
-  private String url;
-  private String title;
-  private Date releaseTime;
-  private Date fetchTime;
+public interface BaseFetchInfoBuilder {
 
-  public BaseFetchInfoBuilder targetUid(final String targetUid) {
-    this.targetUid = targetUid;
-    return this;
-  }
+  BaseFetchInfoBuilder targetUid(String targetUid);
 
-  public BaseFetchInfoBuilder url(final String url) {
-    this.url = url;
-    return this;
-  }
+  BaseFetchInfoBuilder url(String url);
 
-  public BaseFetchInfoBuilder title(final String title) {
-    this.title = title;
-    return this;
-  }
+  BaseFetchInfoBuilder title(String title);
 
-  public BaseFetchInfoBuilder releaseTime(final Date releaseTime) {
-    this.releaseTime = releaseTime;
-    return this;
-  }
+  BaseFetchInfoBuilder releaseTime(Date releaseTime);
 
-  public BaseFetchInfoBuilder fetchTime(final Date fetchTime) {
-    this.fetchTime = fetchTime;
-    return this;
-  }
+  BaseFetchInfoBuilder fetchTime(Date fetchTime);
 
-  public BaseFetchInfo createBaseFetchInfo() {
-    return new BaseFetchInfo(targetUid, url, title, releaseTime, fetchTime);
-  }
+  BaseFetchInfo createBaseFetchInfo();
+
 }

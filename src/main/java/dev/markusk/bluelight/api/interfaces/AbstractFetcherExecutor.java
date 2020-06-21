@@ -1,6 +1,6 @@
 package dev.markusk.bluelight.api.interfaces;
 
-import dev.markusk.bluelight.api.impl.FetcherJob;
+import dev.markusk.bluelight.api.job.FetcherJob;
 
 public interface AbstractFetcherExecutor {
 

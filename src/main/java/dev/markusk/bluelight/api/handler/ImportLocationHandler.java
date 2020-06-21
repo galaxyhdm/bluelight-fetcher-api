@@ -10,7 +10,7 @@ import org.jsoup.nodes.Document;
 
 import java.util.Set;
 
-public class ImportLocationHandler implements ImportHandler {
+public class ImportLocationHandler implements ImportHandler { // TODO: 21.06.2020 look for make in implementation
 
   @Override
   public void handel(final Logger logger, final Article article, final AbstractDataManager dataManager,

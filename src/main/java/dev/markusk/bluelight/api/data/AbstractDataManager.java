@@ -1,5 +1,6 @@
 package dev.markusk.bluelight.api.data;
 
+import dev.markusk.bluelight.api.AbstractFetcher;
 import dev.markusk.bluelight.api.objects.Article;
 import dev.markusk.bluelight.api.objects.Location;
 import dev.markusk.bluelight.api.objects.Topic;
@@ -11,7 +12,7 @@ import java.util.Set;
 
 public interface AbstractDataManager {
 
-  boolean initialize(Logger logger, DataSettings dataSettings);
+  boolean initialize(Logger logger, AbstractFetcher abstractFetcher, DataSettings dataSettings);
 
   void close();
 
@@ -142,5 +143,7 @@ public interface AbstractDataManager {
    * @return true when topic is present
    */
   boolean hasTopic(String id);
+
+  AbstractFetcher getFetcher();
 
 }

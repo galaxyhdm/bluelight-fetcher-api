@@ -7,7 +7,7 @@ import dev.markusk.bluelight.api.objects.Article;
 import org.apache.logging.log4j.Logger;
 import org.jsoup.nodes.Document;
 
-public class ImportContentHandler implements ImportHandler {
+public class ImportContentHandler implements ImportHandler { // TODO: 21.06.2020 look for make in implementation
 
   @Override
   public void handel(final Logger logger, final Article article, final AbstractDataManager dataManager,
