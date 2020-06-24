@@ -8,8 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-  env:
-    SNAPSHOT: false
+    env:
+      SNAPSHOT: false
 
     steps:
       - name: Extract branch name
