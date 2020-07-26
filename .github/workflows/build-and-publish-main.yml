@@ -1,12 +1,12 @@
-name: Build and publish on push master
+name: Build and publish on push main
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  master:
+  main:
     runs-on: ubuntu-latest
     env:
       SNAPSHOT: false
