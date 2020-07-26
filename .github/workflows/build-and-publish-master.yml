@@ -30,7 +30,7 @@ jobs:
       - name: Gradle build and publish
         run: gradle build publish
         env:
-          BASE: ${{ steps.extract_branch.outputs.branch }}
+          BASE_BRANCH: ${{ steps.extract_branch.outputs.branch }}
           SNAP: ${{ env.SNAPSHOT }}
           REPO_USER: ${{ secrets.REPO_USER }}
           REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
